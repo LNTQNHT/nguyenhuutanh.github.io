@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bio 7 Màu Nhấp Nháy + FPS</title>
+    <title>Giới Thiệu Bản Thân</title>
     <style>
         body {
             text-align: center;
@@ -35,16 +35,43 @@
         #time {
             color: cyan;
         }
-        #fps {
-            color: lime;
+        .social-links {
+            margin-top: 20px;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .facebook { background: #1877F2; }
+        .zalo { background: #0088CC; }
+        .telegram { background: #26A5E4; }
+        .tiktok { background: #FF0050; }
+        .youtube { background: #FF0000; }
+        .social-links a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px white;
         }
     </style>
 </head>
 <body>
-    <div class="bio">Chào mừng bạn đến với trang cá nhân của tôi!</div>
+    <div class="bio">💫 Xin chào! Tôi là [Tên của bạn] 💫</div>
     <div id="info">
         <div id="time"></div>
-        <div id="fps"></div>
+    </div>
+
+    <div class="social-links">
+        <a href="https://www.facebook.com/" target="_blank" class="facebook">Facebook</a>
+        <a href="https://zalo.me/" target="_blank" class="zalo">Zalo</a>
+        <a href="https://t.me/" target="_blank" class="telegram">Telegram</a>
+        <a href="https://www.tiktok.com/" target="_blank" class="tiktok">TikTok</a>
+        <a href="https://www.youtube.com/" target="_blank" class="youtube">YouTube</a>
     </div>
 
     <script>
@@ -56,25 +83,6 @@
         }
         setInterval(updateTime, 1000);
         updateTime();
-
-        let lastFrameTime = performance.now();
-        let frameCount = 0;
-        let fps = 0;
-
-        function updateFPS() {
-            let now = performance.now();
-            frameCount++;
-
-            if (now - lastFrameTime >= 1000) {
-                fps = frameCount;
-                frameCount = 0;
-                lastFrameTime = now;
-                document.getElementById("fps").innerHTML = `🎮 FPS: ${fps}`;
-            }
-
-            requestAnimationFrame(updateFPS);
-        }
-        updateFPS();
     </script>
 </body>
 </html>
