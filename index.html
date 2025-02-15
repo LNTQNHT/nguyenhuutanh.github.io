@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bình Minh & Thông Tin</title>
+    <title>Mặt Trăng Chill</title>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         /* CSS cơ bản */
@@ -34,13 +34,14 @@
             border-radius: 5px;
         }
 
-        /* Liên kết mạng xã hội */
+        /* Liên kết mạng xã hội - Xếp dọc */
         .social-links {
             position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
+            flex-direction: column;
             gap: 15px;
         }
 
@@ -72,25 +73,31 @@
             filter: brightness(1.3);
         }
 
-        /* Mặt trời */
-        .sun {
+        /* Mặt trăng */
+        .moon {
             position: absolute;
-            bottom: -100px;
+            top: 20%;
             left: 50%;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, yellow, orange);
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, white, lightgray);
             border-radius: 50%;
-            box-shadow: 0 0 50px rgba(255, 200, 0, 0.8);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
             transform: translateX(-50%);
-            transition: bottom 10s linear;
+            animation: moon-move 5s infinite alternate ease-in-out;
+        }
+
+        /* Hiệu ứng chuyển động nhẹ cho mặt trăng */
+        @keyframes moon-move {
+            0% { transform: translate(-50%, 0px); }
+            100% { transform: translate(-50%, 10px); }
         }
     </style>
 </head>
 <body>
 
-    <!-- Mặt trời -->
-    <div class="sun"></div>
+    <!-- Mặt trăng -->
+    <div class="moon"></div>
 
     <!-- Hiển thị ngày tháng, giờ và FPS -->
     <div id="info">
@@ -151,19 +158,6 @@
             updateFPS();
             requestAnimationFrame(loop);
         });
-
-        // Hiệu ứng bình minh (mặt trời mọc + bầu trời sáng dần)
-        function startSunrise() {
-            let sun = document.querySelector('.sun');
-            sun.style.bottom = '50%'; // Mặt trời mọc lên giữa trời
-
-            // Chuyển nền từ đêm sang sáng
-            setTimeout(() => {
-                document.body.style.background = "linear-gradient(to top, lightblue, yellow)";
-            }, 5000);
-        }
-
-        setTimeout(startSunrise, 2000); // Sau 2 giây thì bình minh bắt đầu
     </script>
 
 </body>
