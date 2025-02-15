@@ -3,62 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giới thiệu bản thân</title>
+    <title>Giới Thiệu Bản Thân</title>
     <style>
-        body {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
+        }
+        body {
+            background: black;
+            color: white;
             text-align: center;
-            background-color: #f0f0f0;
+            padding: 50px 20px;
         }
-        .rainbow-text {
-            animation: rainbow 1s infinite;
+        .fps-counter {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
         }
-        @keyframes rainbow {
-            0% { color: red; }
-            15% { color: orange; }
-            30% { color: yellow; }
-            45% { color: green; }
-            60% { color: blue; }
-            75% { color: indigo; }
-            90% { color: violet; }
+        .container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: auto;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
-        .links a {
-            margin: 5px;
-            text-decoration: none;
-            color: black;
+        h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
             font-weight: bold;
+            text-shadow: 0 0 10px white;
+            animation: neonColors 2s infinite alternate;
         }
-    </style>
-</head>
-<body>
-    <h1 class="rainbow-text">Giới thiệu bản thân</h1>
-    <div id="datetime"></div>
-    <div class="links">
-        <a href="https://www.facebook.com" target="_blank">Facebook</a>
-        <a href="https://zalo.me" target="_blank">Zalo</a>
-        <a href="https://www.youtube.com" target="_blank">YouTube</a>
-        <a href="https://www.tiktok.com" target="_blank">TikTok</a>
-        <a href="https://telegram.org" target="_blank">Telegram</a>
-    </div>
-    <div id="fps">FPS: <span id="fps-counter">0</span></div>
-
-    <script>
-        function updateDateTime() {
-            const now = new Date();
-            document.getElementById('datetime').innerText = `Ngày: ${now.toLocaleDateString()} - Thời gian: ${now.toLocaleTimeString()}`;
+        #time {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px white;
         }
-
-        let lastLoop = new Date();
-        let fps = 0;
-        function calculateFPS() {
-            const thisLoop = new Date();
-            fps = 1000 / (thisLoop - lastLoop);
-            lastLoop = thisLoop;
-            document.getElementById('fps-counter').innerText = fps.toFixed(0);
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
         }
-
-        setInterval(updateDateTime, 1000);
-        setInterval(calculateFPS, 1000);
-    </script>
-</body>
-</html>
+        .social-links a {
+            display: inline-block;
+            padding: 12px 25px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px white;
+        }
+        .social-links a:nth-child(1) { background:
