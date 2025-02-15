@@ -3,20 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang web của tôi</title>
+    <title>Giới Thiệu Bản Thân</title>
     <style>
-        body {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: white;
             text-align: center;
-            margin: 50px;
+            padding: 50px 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            margin: auto;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: zoomIn 1s ease-in-out forwards;
         }
         h1 {
-            color: blue;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        #typing {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            display: inline-block;
+            border-right: 2px solid white;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 3s steps(40, end) forwards, blink 0.8s infinite;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .social-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+        .social-links a:nth-child(1) { animation-delay: 0.2s; }
+        .social-links a:nth-child(2) { animation-delay: 0.4s; }
+        .social-links a:nth-child(3) { animation-delay: 0.6s; }
+        .social-links a:nth-child(4) { animation-delay: 0.8s; }
+        .social-links a:nth-child(5) { animation-delay: 1s; }
+        
+        .facebook { background: #1877f2; }
+        .zalo { background: #0088ff; }
+        .telegram { background: #0088cc; }
+        .youtube { background: #ff0000; }
+        .tiktok { background: #000000; }
+        .social-links a:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        /* Hiệu ứng Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
         }
     </style>
 </head>
 <body>
-    <h1>Chào mừng bạn đến với trang web của tôi!</h1>
-    <p>Đây là một trang web đơn giản được tôi tạo ra.</p>
+    <div class="container">
+        <h1>Xin chào, tôi là Nguyễn Văn A</h1>
+        <p id="typing"></p>
+        
+        <h3>🌟 Kết nối với tôi:</h3>
+        <div class="social-links">
+            <a href="https://facebook.com/yourprofile" class="facebook" target="_blank">Facebook</a>
+            <a href="https://zalo.me/yourprofile" class="zalo" target="_blank">Zalo</a>
+            <a href="https://t.me/yourprofile" class="telegram" target="_blank">Telegram</a>
+            <a href="https://youtube.com/yourchannel" class="youtube" target="_blank">YouTube</a>
+            <a href="https://www.tiktok.com/@yourprofile" class="tiktok" target="_blank">TikTok</a>
+        </div>
+    </div>
+    <footer>© 2025 Nguyễn Văn A | All rights reserved</footer>
+
+    <script>
+        const text = "Tôi là một lập trình viên đam mê công nghệ và du lịch. Tôi luôn học hỏi để phát triển bản thân mỗi ngày, hướng tới mục tiêu trở thành chuyên gia trong lĩnh vực phần mềm.";
+        let index = 0;
+        function typeText() {
+            document.getElementById("typing").innerHTML = text.slice(0, index);
+            index++;
+            if (index <= text.length) {
+                setTimeout(typeText, 50);
+            }
+        }
+        window.onload = function() {
+            setTimeout(typeText, 500);
+        };
+    </script>
 </body>
 </html>
