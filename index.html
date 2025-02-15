@@ -3,44 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nền 7 màu nhấp nháy</title>
+    <title>Nền 20 màu nhấp nháy</title>
     <style>
-        /* Hiệu ứng nền 7 màu */
+        /* Hiệu ứng nền 20 màu nhấp nháy */
         @keyframes rainbow-bg {
-            0% { background-color: red; }
-            14% { background-color: orange; }
-            28% { background-color: yellow; }
-            42% { background-color: green; }
-            57% { background-color: blue; }
-            71% { background-color: indigo; }
-            85% { background-color: violet; }
-            100% { background-color: red; }
+            0% { background-color: #FF0000; }   /* Đỏ */
+            5% { background-color: #FF7F00; }   /* Cam */
+            10% { background-color: #FFFF00; }  /* Vàng */
+            15% { background-color: #7FFF00; }  /* Xanh lá sáng */
+            20% { background-color: #00FF00; }  /* Xanh lá */
+            25% { background-color: #00FF7F; }  /* Xanh ngọc */
+            30% { background-color: #00FFFF; }  /* Xanh nước biển */
+            35% { background-color: #007FFF; }  /* Xanh dương sáng */
+            40% { background-color: #0000FF; }  /* Xanh dương */
+            45% { background-color: #7F00FF; }  /* Tím sáng */
+            50% { background-color: #8B00FF; }  /* Tím */
+            55% { background-color: #9400D3; }  /* Tím đậm */
+            60% { background-color: #FF1493; }  /* Hồng đậm */
+            65% { background-color: #FF69B4; }  /* Hồng nhạt */
+            70% { background-color: #FFD700; }  /* Vàng gold */
+            75% { background-color: #FF4500; }  /* Cam đậm */
+            80% { background-color: #DC143C; }  /* Đỏ đậm */
+            85% { background-color: #ADFF2F; }  /* Xanh chuối */
+            90% { background-color: #32CD32; }  /* Xanh lá cây đậm */
+            95% { background-color: #20B2AA; }  /* Xanh nước biển đậm */
+            100% { background-color: #FF0000; } /* Quay lại màu đỏ */
         }
         body {
-            animation: rainbow-bg 5s infinite linear;
+            animation: rainbow-bg 10s infinite linear;
             text-align: center;
             font-family: Arial, sans-serif;
             overflow: hidden;
         }
 
-        /* Hiệu ứng chữ 7 màu */
+        /* Hiệu ứng chữ 20 màu nhấp nháy */
         @keyframes rainbow-text {
-            0% { color: red; }
-            14% { color: orange; }
-            28% { color: yellow; }
-            42% { color: green; }
-            57% { color: blue; }
-            71% { color: indigo; }
-            85% { color: violet; }
-            100% { color: red; }
+            0%, 100% { color: #FF0000; } 
+            5% { color: #FF7F00; }  
+            10% { color: #FFFF00; }  
+            15% { color: #7FFF00; }  
+            20% { color: #00FF00; }  
+            25% { color: #00FF7F; }  
+            30% { color: #00FFFF; }  
+            35% { color: #007FFF; }  
+            40% { color: #0000FF; }  
+            45% { color: #7F00FF; }  
+            50% { color: #8B00FF; }  
+            55% { color: #9400D3; }  
+            60% { color: #FF1493; }  
+            65% { color: #FF69B4; }  
+            70% { color: #FFD700; }  
+            75% { color: #FF4500; }  
+            80% { color: #DC143C; }  
+            85% { color: #ADFF2F; }  
+            90% { color: #32CD32; }  
+            95% { color: #20B2AA; }  
         }
         .rainbow-text {
             font-size: 24px;
             font-weight: bold;
-            animation: rainbow-text 2s infinite linear;
+            animation: rainbow-text 5s infinite linear;
         }
 
-        /* Khung chứa thông tin */
+        /* Container chứa thông tin */
         .info-container {
             margin-top: 20px;
         }
@@ -60,14 +85,14 @@
             transition: 0.3s;
         }
 
-        /* Màu sắc cho từng mạng xã hội */
+        /* Màu sắc cho các nền tảng */
         .facebook { background: #1877F2; color: white; }
         .zalo { background: #0068FF; color: white; }
         .youtube { background: #FF0000; color: white; }
         .tiktok { background: #000000; color: white; }
         .telegram { background: #0088cc; color: white; }
 
-        /* Hover hiệu ứng */
+        /* Hiệu ứng hover */
         .social-links a:hover {
             transform: scale(1.1);
         }
@@ -75,7 +100,7 @@
 </head>
 <body>
 
-    <h1 class="rainbow-text">NỀN 7 MÀU NHẤP NHÁY</h1>
+    <h1 class="rainbow-text">NỀN 20 MÀU NHẤP NHÁY</h1>
 
     <div class="info-container">
         <p class="rainbow-text" id="datetime">Đang tải...</p>
