@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bình Minh & Thông Tin</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         /* CSS cơ bản */
         body {
@@ -36,25 +37,39 @@
         /* Liên kết mạng xã hội */
         .social-links {
             position: fixed;
-            bottom: 10px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
 
         .social-links a {
-            color: white;
             text-decoration: none;
-            font-size: 20px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             transition: 0.3s;
         }
 
+        .social-links a i {
+            font-size: 22px;
+        }
+
+        /* Màu sắc theo thương hiệu */
+        .facebook { background: #3b5998; }
+        .zalo { background: #0088cc; }
+        .tiktok { background: #ff0050; }
+        .youtube { background: #ff0000; }
+
+        /* Hover sáng lên */
         .social-links a:hover {
-            background: rgba(255, 255, 255, 0.5);
+            filter: brightness(1.3);
         }
 
         /* Mặt trời */
@@ -85,10 +100,18 @@
 
     <!-- Liên kết mạng xã hội -->
     <div class="social-links">
-        <a href="https://facebook.com" target="_blank">Facebook</a>
-        <a href="https://zalo.me" target="_blank">Zalo</a>
-        <a href="https://tiktok.com" target="_blank">TikTok</a>
-        <a href="https://youtube.com" target="_blank">YouTube</a>
+        <a href="https://facebook.com" target="_blank" class="facebook">
+            <i class="fab fa-facebook"></i> Facebook
+        </a>
+        <a href="https://zalo.me" target="_blank" class="zalo">
+            <i class="fas fa-comment"></i> Zalo
+        </a>
+        <a href="https://tiktok.com" target="_blank" class="tiktok">
+            <i class="fab fa-tiktok"></i> TikTok
+        </a>
+        <a href="https://youtube.com" target="_blank" class="youtube">
+            <i class="fab fa-youtube"></i> YouTube
+        </a>
     </div>
 
     <script>
