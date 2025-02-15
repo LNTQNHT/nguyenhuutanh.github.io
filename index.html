@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hiệu Ứng Mưa & Thông Tin</title>
+    <title>Bình Minh & Thông Tin</title>
     <style>
         /* CSS cơ bản */
         body {
             margin: 0;
             overflow: hidden;
             font-family: Arial, sans-serif;
-            background: black;
+            background: linear-gradient(to top, black, darkblue);
             color: white;
             text-align: center;
+            transition: background 5s linear;
         }
 
         /* Hiển thị 50 chữ với màu ngẫu nhiên */
@@ -56,23 +57,25 @@
             background: rgba(255, 255, 255, 0.5);
         }
 
-        /* Hiệu ứng mưa */
-        .raindrop {
-            position: fixed;
-            width: 2px;
-            height: 10px;
-            background: white;
-            opacity: 0.7;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            from { transform: translateY(-100px); }
-            to { transform: translateY(100vh); }
+        /* Mặt trời */
+        .sun {
+            position: absolute;
+            bottom: -100px;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, yellow, orange);
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(255, 200, 0, 0.8);
+            transform: translateX(-50%);
+            transition: bottom 10s linear;
         }
     </style>
 </head>
 <body>
+
+    <!-- Mặt trời -->
+    <div class="sun"></div>
 
     <!-- Hiển thị ngày tháng, giờ và FPS -->
     <div id="info">
@@ -126,19 +129,18 @@
             requestAnimationFrame(loop);
         });
 
-        // Hiệu ứng mưa
-        function createRain() {
-            for (let i = 0; i < 100; i++) {
-                let drop = document.createElement("div");
-                drop.className = "raindrop";
-                drop.style.left = Math.random() * window.innerWidth + "px";
-                drop.style.top = -Math.random() * 100 + "px";
-                drop.style.animationDuration = (Math.random() * 2 + 1) + "s";
-                document.body.appendChild(drop);
-                setTimeout(() => drop.remove(), 3000);
-            }
+        // Hiệu ứng bình minh (mặt trời mọc + bầu trời sáng dần)
+        function startSunrise() {
+            let sun = document.querySelector('.sun');
+            sun.style.bottom = '50%'; // Mặt trời mọc lên giữa trời
+
+            // Chuyển nền từ đêm sang sáng
+            setTimeout(() => {
+                document.body.style.background = "linear-gradient(to top, lightblue, yellow)";
+            }, 5000);
         }
-        setInterval(createRain, 100);
+
+        setTimeout(startSunrise, 2000); // Sau 2 giây thì bình minh bắt đầu
     </script>
 
 </body>
