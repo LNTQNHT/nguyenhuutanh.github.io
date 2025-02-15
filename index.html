@@ -3,147 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nền 20 màu nhấp nháy</title>
+    <title>Hiệu Ứng Mưa & Thông Tin</title>
     <style>
-        /* Hiệu ứng nền 20 màu nhấp nháy */
-        @keyframes rainbow-bg {
-            0% { background-color: #FF0000; }   /* Đỏ */
-            5% { background-color: #FF7F00; }   /* Cam */
-            10% { background-color: #FFFF00; }  /* Vàng */
-            15% { background-color: #7FFF00; }  /* Xanh lá sáng */
-            20% { background-color: #00FF00; }  /* Xanh lá */
-            25% { background-color: #00FF7F; }  /* Xanh ngọc */
-            30% { background-color: #00FFFF; }  /* Xanh nước biển */
-            35% { background-color: #007FFF; }  /* Xanh dương sáng */
-            40% { background-color: #0000FF; }  /* Xanh dương */
-            45% { background-color: #7F00FF; }  /* Tím sáng */
-            50% { background-color: #8B00FF; }  /* Tím */
-            55% { background-color: #9400D3; }  /* Tím đậm */
-            60% { background-color: #FF1493; }  /* Hồng đậm */
-            65% { background-color: #FF69B4; }  /* Hồng nhạt */
-            70% { background-color: #FFD700; }  /* Vàng gold */
-            75% { background-color: #FF4500; }  /* Cam đậm */
-            80% { background-color: #DC143C; }  /* Đỏ đậm */
-            85% { background-color: #ADFF2F; }  /* Xanh chuối */
-            90% { background-color: #32CD32; }  /* Xanh lá cây đậm */
-            95% { background-color: #20B2AA; }  /* Xanh nước biển đậm */
-            100% { background-color: #FF0000; } /* Quay lại màu đỏ */
-        }
+        /* CSS cơ bản */
         body {
-            animation: rainbow-bg 10s infinite linear;
-            text-align: center;
-            font-family: Arial, sans-serif;
+            margin: 0;
             overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: black;
+            color: white;
+            text-align: center;
         }
 
-        /* Hiệu ứng chữ 20 màu nhấp nháy */
-        @keyframes rainbow-text {
-            0%, 100% { color: #FF0000; } 
-            5% { color: #FF7F00; }  
-            10% { color: #FFFF00; }  
-            15% { color: #7FFF00; }  
-            20% { color: #00FF00; }  
-            25% { color: #00FF7F; }  
-            30% { color: #00FFFF; }  
-            35% { color: #007FFF; }  
-            40% { color: #0000FF; }  
-            45% { color: #7F00FF; }  
-            50% { color: #8B00FF; }  
-            55% { color: #9400D3; }  
-            60% { color: #FF1493; }  
-            65% { color: #FF69B4; }  
-            70% { color: #FFD700; }  
-            75% { color: #FF4500; }  
-            80% { color: #DC143C; }  
-            85% { color: #ADFF2F; }  
-            90% { color: #32CD32; }  
-            95% { color: #20B2AA; }  
-        }
-        .rainbow-text {
-            font-size: 24px;
+        /* Hiển thị 50 chữ với màu ngẫu nhiên */
+        .random-text {
+            position: absolute;
+            font-size: 20px;
             font-weight: bold;
-            animation: rainbow-text 5s infinite linear;
         }
 
-        /* Container chứa thông tin */
-        .info-container {
-            margin-top: 20px;
-        }
-
-        /* Danh sách mạng xã hội */
-        .social-links {
-            margin-top: 20px;
-        }
-        .social-links a {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            text-decoration: none;
+        /* Đồng hồ và FPS */
+        #info {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
             border-radius: 5px;
+        }
+
+        /* Liên kết mạng xã hội */
+        .social-links {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
             transition: 0.3s;
         }
 
-        /* Màu sắc cho các nền tảng */
-        .facebook { background: #1877F2; color: white; }
-        .zalo { background: #0068FF; color: white; }
-        .youtube { background: #FF0000; color: white; }
-        .tiktok { background: #000000; color: white; }
-        .telegram { background: #0088cc; color: white; }
-
-        /* Hiệu ứng hover */
         .social-links a:hover {
-            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Hiệu ứng mưa */
+        .raindrop {
+            position: fixed;
+            width: 2px;
+            height: 10px;
+            background: white;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            from { transform: translateY(-100px); }
+            to { transform: translateY(100vh); }
         }
     </style>
 </head>
 <body>
 
-    <h1 class="rainbow-text">NỀN 20 MÀU NHẤP NHÁY</h1>
-
-    <div class="info-container">
-        <p class="rainbow-text" id="datetime">Đang tải...</p>
-        <p class="rainbow-text" id="fps">FPS: 0</p>
+    <!-- Hiển thị ngày tháng, giờ và FPS -->
+    <div id="info">
+        <p id="datetime"></p>
+        <p id="fps">FPS: 0</p>
     </div>
 
+    <!-- Liên kết mạng xã hội -->
     <div class="social-links">
-        <a href="https://www.facebook.com" target="_blank" class="facebook">Facebook</a>
-        <a href="https://zalo.me" target="_blank" class="zalo">Zalo</a>
-        <a href="https://www.youtube.com" target="_blank" class="youtube">YouTube</a>
-        <a href="https://www.tiktok.com" target="_blank" class="tiktok">TikTok</a>
-        <a href="https://t.me" target="_blank" class="telegram">Telegram</a>
+        <a href="https://facebook.com" target="_blank">Facebook</a>
+        <a href="https://zalo.me" target="_blank">Zalo</a>
+        <a href="https://tiktok.com" target="_blank">TikTok</a>
+        <a href="https://youtube.com" target="_blank">YouTube</a>
     </div>
 
     <script>
-        // Cập nhật thời gian thực
-        function updateTime() {
-            const now = new Date();
-            const day = String(now.getDate()).padStart(2, '0');
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const year = now.getFullYear();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById("datetime").innerHTML = `⏰ ${day}/${month}/${year} - ${hours}:${minutes}:${seconds}`;
-        }
-        setInterval(updateTime, 1000);
-        updateTime();
-
-        // Đếm FPS
-        let lastTime = performance.now();
-        let frameCount = 0;
-        function updateFPS() {
-            const now = performance.now();
-            frameCount++;
-            if (now - lastTime >= 1000) {
-                document.getElementById("fps").innerHTML = `FPS: ${frameCount}`;
-                frameCount = 0;
-                lastTime = now;
+        // Hiển thị 50 chữ với màu ngẫu nhiên
+        function createRandomText() {
+            for (let i = 0; i < 50; i++) {
+                let text = document.createElement("div");
+                text.className = "random-text";
+                text.innerText = String.fromCharCode(65 + Math.floor(Math.random() * 26)); // Chữ ngẫu nhiên từ A-Z
+                text.style.color = `rgb(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255})`;
+                text.style.left = Math.random() * window.innerWidth + "px";
+                text.style.top = Math.random() * window.innerHeight + "px";
+                document.body.appendChild(text);
             }
-            requestAnimationFrame(updateFPS);
         }
-        updateFPS();
+
+        createRandomText();
+
+        // Cập nhật ngày, giờ và FPS
+        function updateDateTime() {
+            let now = new Date();
+            document.getElementById("datetime").innerText = `📅 ${now.toLocaleDateString()} 🕒 ${now.toLocaleTimeString()}`;
+        }
+        setInterval(updateDateTime, 1000);
+
+        // Tính FPS
+        let fps = 0;
+        function updateFPS() {
+            fps++;
+        }
+        function displayFPS() {
+            document.getElementById("fps").innerText = `FPS: ${fps}`;
+            fps = 0;
+        }
+        setInterval(displayFPS, 1000);
+        requestAnimationFrame(function loop() {
+            updateFPS();
+            requestAnimationFrame(loop);
+        });
+
+        // Hiệu ứng mưa
+        function createRain() {
+            for (let i = 0; i < 100; i++) {
+                let drop = document.createElement("div");
+                drop.className = "raindrop";
+                drop.style.left = Math.random() * window.innerWidth + "px";
+                drop.style.top = -Math.random() * 100 + "px";
+                drop.style.animationDuration = (Math.random() * 2 + 1) + "s";
+                document.body.appendChild(drop);
+                setTimeout(() => drop.remove(), 3000);
+            }
+        }
+        setInterval(createRain, 100);
     </script>
 
 </body>
