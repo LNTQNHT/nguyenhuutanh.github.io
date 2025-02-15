@@ -3,21 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giới Thiệu Bản Thân</title>
+    <title>Nền 7 màu nhấp nháy</title>
     <style>
+        /* Hiệu ứng nền 7 màu */
+        @keyframes rainbow-bg {
+            0% { background-color: red; }
+            14% { background-color: orange; }
+            28% { background-color: yellow; }
+            42% { background-color: green; }
+            57% { background-color: blue; }
+            71% { background-color: indigo; }
+            85% { background-color: violet; }
+            100% { background-color: red; }
+        }
         body {
+            animation: rainbow-bg 5s infinite linear;
             text-align: center;
-            background-color: black;
-            color: white;
             font-family: Arial, sans-serif;
+            overflow: hidden;
         }
-        .bio {
-            font-size: 30px;
-            font-weight: bold;
-            text-shadow: 0 0 10px white;
-            animation: rainbow 1s infinite alternate;
-        }
-        @keyframes rainbow {
+
+        /* Hiệu ứng chữ 7 màu */
+        @keyframes rainbow-text {
             0% { color: red; }
             14% { color: orange; }
             28% { color: yellow; }
@@ -27,85 +34,92 @@
             85% { color: violet; }
             100% { color: red; }
         }
-        #info {
-            margin-top: 20px;
+        .rainbow-text {
             font-size: 24px;
             font-weight: bold;
+            animation: rainbow-text 2s infinite linear;
         }
-        #time {
-            color: cyan;
+
+        /* Khung chứa thông tin */
+        .info-container {
+            margin-top: 20px;
         }
-        #fps {
-            color: lime;
-        }
+
+        /* Danh sách mạng xã hội */
         .social-links {
             margin-top: 20px;
         }
         .social-links a {
             display: inline-block;
-            margin: 10px;
             padding: 10px 20px;
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
+            margin: 5px;
+            font-size: 18px;
             font-weight: bold;
-            border-radius: 10px;
+            text-decoration: none;
+            border-radius: 5px;
             transition: 0.3s;
         }
-        .facebook { background: #1877F2; }
-        .zalo { background: #0088CC; }
-        .telegram { background: #26A5E4; }
-        .tiktok { background: #FF0050; }
-        .youtube { background: #FF0000; }
+
+        /* Màu sắc cho từng mạng xã hội */
+        .facebook { background: #1877F2; color: white; }
+        .zalo { background: #0068FF; color: white; }
+        .youtube { background: #FF0000; color: white; }
+        .tiktok { background: #000000; color: white; }
+        .telegram { background: #0088cc; color: white; }
+
+        /* Hover hiệu ứng */
         .social-links a:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 15px white;
         }
     </style>
 </head>
 <body>
-    <div class="bio">💫 Xin chào! Tôi là [Tên của bạn] 💫</div>
-    <div id="info">
-        <div id="time"></div>
-        <div id="fps"></div>
+
+    <h1 class="rainbow-text">NỀN 7 MÀU NHẤP NHÁY</h1>
+
+    <div class="info-container">
+        <p class="rainbow-text" id="datetime">Đang tải...</p>
+        <p class="rainbow-text" id="fps">FPS: 0</p>
     </div>
 
     <div class="social-links">
-        <a href="https://www.facebook.com/" target="_blank" class="facebook">Facebook</a>
-        <a href="https://zalo.me/" target="_blank" class="zalo">Zalo</a>
-        <a href="https://t.me/cheatiosfreevip" target="_blank" class="telegram">Telegram</a>
-        <a href="https://www.tiktok.com/@nghuutanh" target="_blank" class="tiktok">TikTok</a>
-        <a href="https://www.youtube.com/@TanhPhaiPhai" target="_blank" class="youtube">YouTube</a>
+        <a href="https://www.facebook.com" target="_blank" class="facebook">Facebook</a>
+        <a href="https://zalo.me" target="_blank" class="zalo">Zalo</a>
+        <a href="https://www.youtube.com" target="_blank" class="youtube">YouTube</a>
+        <a href="https://www.tiktok.com" target="_blank" class="tiktok">TikTok</a>
+        <a href="https://t.me" target="_blank" class="telegram">Telegram</a>
     </div>
 
     <script>
+        // Cập nhật thời gian thực
         function updateTime() {
-            let now = new Date();
-            let date = now.toLocaleDateString('vi-VN');
-            let time = now.toLocaleTimeString('vi-VN');
-            document.getElementById("time").innerHTML = `📅 Ngày: ${date} - ⏰ Giờ: ${time}`;
+            const now = new Date();
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const year = now.getFullYear();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById("datetime").innerHTML = `⏰ ${day}/${month}/${year} - ${hours}:${minutes}:${seconds}`;
         }
         setInterval(updateTime, 1000);
         updateTime();
 
-        let lastFrameTime = performance.now();
+        // Đếm FPS
+        let lastTime = performance.now();
         let frameCount = 0;
-        let fps = 0;
-
         function updateFPS() {
-            let now = performance.now();
+            const now = performance.now();
             frameCount++;
-
-            if (now - lastFrameTime >= 1000) {
-                fps = frameCount;
+            if (now - lastTime >= 1000) {
+                document.getElementById("fps").innerHTML = `FPS: ${frameCount}`;
                 frameCount = 0;
-                lastFrameTime = now;
-                document.getElementById("fps").innerHTML = `🎮 FPS: ${fps}`;
+                lastTime = now;
             }
-
             requestAnimationFrame(updateFPS);
         }
         updateFPS();
     </script>
+
 </body>
 </html>
