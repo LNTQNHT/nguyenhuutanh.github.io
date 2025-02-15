@@ -3,68 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giới Thiệu Bản Thân</title>
+    <title>Giới thiệu bản thân</title>
     <style>
         body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #000;
+            color: #fff;
             font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            color: #333;
-        }
-        .header {
-            background-color: #4682b4;
-            color: white;
-            padding: 20px;
             text-align: center;
         }
-        .content {
-            margin: 20px;
+        .rainbow-text {
+            font-size: 3rem;
+            animation: rainbow 1s infinite;
         }
-        .bio {
-            background-color: #e0ffff;
-            padding: 15px;
-            border-radius: 10px;
-        }
-        .time-fps {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #fafad2;
-            border-radius: 10px;
+        @keyframes rainbow {
+            0% { color: red; }
+            16.6% { color: orange; }
+            33.2% { color: yellow; }
+            49.8% { color: green; }
+            66.4% { color: blue; }
+            83% { color: indigo; }
+            100% { color: violet; }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Chào Mừng Đến Với Trang Web Của Tôi!</h1>
-    </div>
-    <div class="content">
-        <div class="bio">
-            <h2>Giới thiệu</h2>
-            <p>Tên tôi là [Tên của bạn]. Tôi rất thích lập trình và khám phá những điều mới mẻ trong thế giới công nghệ.</p>
-        </div>
-        <div class="time-fps">
-            <h2>Thông tin thời gian và FPS</h2>
-            <p>Giờ hiện tại: <span id="current-time"></span></p>
-            <p>FPS: <span id="fps">0</span></p>
-        </div>
-    </div>
+    <div class="rainbow-text">Xin chào! Tôi là Smith, trợ lý AI của bạn.</div>
+    <div id="date-time"></div>
+    <div id="fps"></div>
+
     <script>
-        // Function to update the current time
-        function updateTime() {
+        function updateDateTime() {
             const now = new Date();
-            document.getElementById('current-time').textContent = now.toLocaleTimeString();
+            document.getElementById('date-time').innerText = `Ngày: ${now.toLocaleDateString()} Thời gian: ${now.toLocaleTimeString()}`;
         }
 
-        // Simulate FPS calculation
+        let lastFrameTime = Date.now();
         function calculateFPS() {
-            const fakeFPS = Math.floor(Math.random() * 60) + 1; // FPS giả lập từ 1 đến 60
-            document.getElementById('fps').textContent = fakeFPS;
+            const now = Date.now();
+            const delta = (now - lastFrameTime) / 1000;
+            lastFrameTime = now;
+            const fps = Math.round(1 / delta);
+            document.getElementById('fps').innerText = `FPS: ${fps}`;
         }
 
-        // Update time and FPS every second
-        setInterval(() => {
-            updateTime();
+        function loop() {
+            updateDateTime();
             calculateFPS();
-        }, 1000);
+            requestAnimationFrame(loop);
+        }
+
+        loop();
     </script>
 </body>
 </html>
