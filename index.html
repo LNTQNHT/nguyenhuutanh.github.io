@@ -7,56 +7,64 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
+            background-color: #f0f8ff;
+            color: #333;
         }
-        header {
-            background-color: #4CAF50; /* Green */
+        .header {
+            background-color: #4682b4;
             color: white;
-            text-align: center;
-            padding: 1em 0;
-        }
-        section {
             padding: 20px;
-            margin: 10px;
-            border-radius: 8px;
+            text-align: center;
         }
-        #about {
-            background-color: #2196F3; /* Blue */
-            color: white;
+        .content {
+            margin: 20px;
         }
-        #hobbies {
-            background-color: #FF9800; /* Orange */
-            color: white;
+        .bio {
+            background-color: #e0ffff;
+            padding: 15px;
+            border-radius: 10px;
         }
-        #contact {
-            background-color: #9C27B0; /* Purple */
-            color: white;
+        .time-fps {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fafad2;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <h1>Chào Mừng Đến Với Trang Web Của Tôi!</h1>
+    </div>
+    <div class="content">
+        <div class="bio">
+            <h2>Giới thiệu</h2>
+            <p>Tên tôi là [Tên của bạn]. Tôi rất thích lập trình và khám phá những điều mới mẻ trong thế giới công nghệ.</p>
+        </div>
+        <div class="time-fps">
+            <h2>Thông tin thời gian và FPS</h2>
+            <p>Giờ hiện tại: <span id="current-time"></span></p>
+            <p>FPS: <span id="fps">0</span></p>
+        </div>
+    </div>
+    <script>
+        // Function to update the current time
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = now.toLocaleTimeString();
+        }
 
-    <header>
-        <h1>Chào Mừng Đến với Trang Giới Thiệu Bản Thân Của Tôi</h1>
-    </header>
+        // Simulate FPS calculation
+        function calculateFPS() {
+            const fakeFPS = Math.floor(Math.random() * 60) + 1; // FPS giả lập từ 1 đến 60
+            document.getElementById('fps').textContent = fakeFPS;
+        }
 
-    <section id="about">
-        <h2>Về Tôi</h2>
-        <p>Xin chào! Tôi tên là [Tên của bạn]. Tôi là một người đam mê [lĩnh vực của bạn] và tôi luôn tìm kiếm cơ hội để học hỏi và phát triển thêm kỹ năng trong [chuyên môn của bạn].</p>
-    </section>
-
-    <section id="hobbies">
-        <h2>Sở Thích</h2>
-        <p>Tôi thích [sở thích của bạn] và thường dành thời gian rảnh để [hoạt động liên quan]. Ngoài ra, tôi cũng thích [sở thích khác] và [hoạt động vui vẻ khác].</p>
-    </section>
-
-    <section id="contact">
-        <h2>Liên Hệ</h2>
-        <p>Bạn có thể liên hệ với tôi qua email: [email của bạn] hoặc theo dõi tôi trên [mạng xã hội của bạn] để cập nhật những điều thú vị mà tôi chia sẻ.</p>
-    </section>
-
+        // Update time and FPS every second
+        setInterval(() => {
+            updateTime();
+            calculateFPS();
+        }, 1000);
+    </script>
 </body>
 </html>
