@@ -8,44 +8,41 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
             height: 100vh;
-            background-color: #000;
-            color: #fff;
+            background-color: #f0f0f0;
         }
-        #introduction {
-            font-size: 24px;
+        .rainbow-text {
+            font-size: 36px;
             font-weight: bold;
             animation: rainbow 2s infinite;
         }
-        #datetime {
-            margin-top: 20px;
-            font-size: 18px;
+        @keyframes rainbow {
+            0% { color: red; }
+            14% { color: orange; }
+            28% { color: yellow; }
+            42% { color: green; }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+            100% { color: red; }
         }
         .social-links a {
             margin: 0 10px;
-            color: #fff;
             text-decoration: none;
+            color: #333;
+            font-size: 24px;
         }
-        @keyframes rainbow {
-            0% {color: red;}
-            14% {color: orange;}
-            28% {color: yellow;}
-            42% {color: green;}
-            57% {color: blue;}
-            71% {color: indigo;}
-            85% {color: violet;}
-            100% {color: red;}
+        #current-time {
+            font-size: 24px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div id="introduction">
-        Xin chào, Tôi là [Tên của bạn]!
-    </div>
-    <div id="datetime"></div>
+    <div class="rainbow-text">Giới thiệu bản thân</div>
     <div class="social-links">
         <a href="https://facebook.com" target="_blank">Facebook</a>
         <a href="https://zalo.me" target="_blank">Zalo</a>
@@ -53,15 +50,17 @@
         <a href="https://tiktok.com" target="_blank">TikTok</a>
         <a href="https://telegram.org" target="_blank">Telegram</a>
     </div>
+    <div id="current-time"></div>
 
     <script>
-        function updateDateTime() {
+        function updateTime() {
             const now = new Date();
-            const formattedDateTime = now.toLocaleString("vi-VN");
-            document.getElementById('datetime').textContent = formattedDateTime;
+            const timeString = now.toLocaleString();
+            document.getElementById("current-time").textContent = `Thời gian hiện tại: ${timeString}`;
         }
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
+
+        updateTime();
+        setInterval(updateTime, 1000); // Cập nhật thời gian mỗi giây
     </script>
 </body>
 </html>
