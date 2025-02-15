@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bio 7 Màu Nhấp Nháy</title>
+    <title>Bio 7 Màu Nhấp Nháy + FPS</title>
     <style>
         body {
             text-align: center;
@@ -27,17 +27,25 @@
             85% { color: violet; }
             100% { color: red; }
         }
-        #time {
+        #info {
             margin-top: 20px;
             font-size: 24px;
             font-weight: bold;
+        }
+        #time {
             color: cyan;
+        }
+        #fps {
+            color: lime;
         }
     </style>
 </head>
 <body>
     <div class="bio">Chào mừng bạn đến với trang cá nhân của tôi!</div>
-    <div id="time"></div>
+    <div id="info">
+        <div id="time"></div>
+        <div id="fps"></div>
+    </div>
 
     <script>
         function updateTime() {
@@ -48,6 +56,25 @@
         }
         setInterval(updateTime, 1000);
         updateTime();
+
+        let lastFrameTime = performance.now();
+        let frameCount = 0;
+        let fps = 0;
+
+        function updateFPS() {
+            let now = performance.now();
+            frameCount++;
+
+            if (now - lastFrameTime >= 1000) {
+                fps = frameCount;
+                frameCount = 0;
+                lastFrameTime = now;
+                document.getElementById("fps").innerHTML = `🎮 FPS: ${fps}`;
+            }
+
+            requestAnimationFrame(updateFPS);
+        }
+        updateFPS();
     </script>
 </body>
 </html>
