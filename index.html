@@ -1,66 +1,36 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giới Thiệu Bản Thân</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
-        .rainbow-text {
-            font-size: 36px;
-            font-weight: bold;
-            animation: rainbow 2s infinite;
-        }
-        @keyframes rainbow {
-            0% { color: red; }
-            14% { color: orange; }
-            28% { color: yellow; }
-            42% { color: green; }
-            57% { color: blue; }
-            71% { color: indigo; }
-            85% { color: violet; }
-            100% { color: red; }
-        }
-        .social-links a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #333;
-            font-size: 24px;
-        }
-        #current-time {
-            font-size: 24px;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giới thiệu bản thân</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f3f3f3;
+      color: #333;
+    }
+    .rainbow-text {
+      font-weight: bold;
+      font-size: 24px;
+      animation: color-change 1s infinite;
+    }
+    @keyframes color-change {
+      0% { color: red; }
+      14% { color: orange; }
+      28% { color: yellow; }
+      42% { color: green; }
+      56% { color: blue; }
+      70% { color: indigo; }
+      84% { color: violet; }
+      100% { color: red; }
+    }
+    .social-links a {
+      margin: 5px;
+      text-decoration: none;
+      color: black;
+    }
+  </style>
 </head>
 <body>
-    <div class="rainbow-text">Giới thiệu bản thân</div>
-    <div class="social-links">
-        <a href="https://facebook.com" target="_blank">Facebook</a>
-        <a href="https://zalo.me" target="_blank">Zalo</a>
-        <a href="https://youtube.com" target="_blank">YouTube</a>
-        <a href="https://tiktok.com" target="_blank">TikTok</a>
-        <a href="https://telegram.org" target="_blank">Telegram</a>
-    </div>
-    <div id="current-time"></div>
-
-    <script>
-        function updateTime() {
-            const now = new Date();
-            const timeString = now.toLocaleString();
-            document.getElementById("current-time").textContent = `Thời gian hiện tại: ${timeString}`;
-        }
-
-        updateTime();
-        setInterval(updateTime, 1000); // Cập nhật thời gian mỗi giây
-    </script>
-</body>
-</html>
