@@ -35,6 +35,9 @@
         #time {
             color: cyan;
         }
+        #fps {
+            color: lime;
+        }
         .social-links {
             margin-top: 20px;
         }
@@ -64,6 +67,7 @@
     <div class="bio">💫 Xin chào! Tôi là [Tên của bạn] 💫</div>
     <div id="info">
         <div id="time"></div>
+        <div id="fps"></div>
     </div>
 
     <div class="social-links">
@@ -83,6 +87,25 @@
         }
         setInterval(updateTime, 1000);
         updateTime();
+
+        let lastFrameTime = performance.now();
+        let frameCount = 0;
+        let fps = 0;
+
+        function updateFPS() {
+            let now = performance.now();
+            frameCount++;
+
+            if (now - lastFrameTime >= 1000) {
+                fps = frameCount;
+                frameCount = 0;
+                lastFrameTime = now;
+                document.getElementById("fps").innerHTML = `🎮 FPS: ${fps}`;
+            }
+
+            requestAnimationFrame(updateFPS);
+        }
+        updateFPS();
     </script>
 </body>
 </html>
